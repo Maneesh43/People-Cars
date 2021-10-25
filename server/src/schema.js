@@ -1,5 +1,6 @@
 import { gql } from "apollo-server-core";
 import { people, cars } from "./data";
+import {filter} from 'lodash'
 
 const typeDefs = gql`
   type People {
@@ -20,6 +21,7 @@ const typeDefs = gql`
   type Query {
     people: [People]
     car: [Car]
+    personCars(id:String):[Car]
   }
 
   type Mutation{
@@ -30,6 +32,10 @@ const resolvers = {
   Query: {
     people: () => people,
     car: () => cars,
+    personCars:(parent,args,context,info)=>{
+const items=filter(cars,{personId:args.id})
+return items
+    }
   },
   Mutation:{
 addPerson:()=>people[0]
