@@ -10,7 +10,6 @@ function PersonCard() {
   const { loading, error, data } = useQuery(GET_PEOPLE);
   if (loading) return "Loading...";
   if (error) return "Error has occured in the application.";
-  console.log(data);
   return (
     <Card sx={{ maxWidth: "80%" }} style={{ height: "80%" }}>
       <CardContent>

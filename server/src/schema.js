@@ -58,8 +58,8 @@ const resolvers = {
     },
     person: (parent, args, context, info) => {
       const person = find(people, { id: args.id });
-return person
-    }
+      return person;
+    },
   },
   Mutation: {
     addPerson: (root, args) => {
@@ -112,16 +112,10 @@ return person
       return person;
     },
     removeCar: (root, args) => {
-      const removedcar = find(cars, { id: args.id });
-      if (!removedcar) {
-        throw new Error(`Couldn't find contact with id ${args.id}`);
-      }
-
-      remove(cars, (c) => {
-        return c.id === removedcar.id;
-      });
-
-      return removedcar;
+      const car = find(cars, { id: args.id });
+      if (!car) throw new Error(`Couldn't find car with id ${args.id}`);
+      remove(cars, car);
+      return car;
     },
   },
 };

@@ -9,8 +9,8 @@ export const GET_PEOPLE = gql`
     }
   }
 `;
-export const GET_CARS = gql`
-{
+
+export const GET_CARS=gql`{
   car {
     id
     year
@@ -19,8 +19,7 @@ export const GET_CARS = gql`
     price
     personId
   }
-}
-  `;
+}`
   
   export const GET_PERSON_CARS=gql`
   
@@ -59,8 +58,8 @@ export const ADD_CAR = gql`mutation Mutation($id: String!, $year: Int!, $make: S
 
   export const UPDATE_CAR = gql`
 
-  mutation UpdateCarMutation($updateCarId: String!, $year: Int, $make: String, $model: String, $price: Float, $personId: String) {
-    updateCar(id: $updateCarId, year: $year, make: $make, model: $model, price: $price, personId: $personId) {
+  mutation UpdateCarMutation($id: String!, $year: Int, $make: String, $model: String, $price: Float, $personId: String) {
+    updateCar(id: $id, year: $year, make: $make, model: $model, price: $price, personId: $personId) {
       id
       year
       make
@@ -70,8 +69,8 @@ export const ADD_CAR = gql`mutation Mutation($id: String!, $year: Int!, $make: S
     }
   }
   `
-  export const UPDATE_PERSON = gql`mutation UpdatePersonMutation($updatePersonId: String!, $firstName: String, $lastName: String) {
-    updatePerson(id: $updatePersonId, firstName: $firstName, lastName: $lastName) {
+  export const UPDATE_PERSON = gql`mutation UpdatePersonMutation($id: String!, $firstName: String, $lastName: String) {
+    updatePerson(id: $id, firstName: $firstName, lastName: $lastName) {
       id
       firstName
       lastName
@@ -80,8 +79,8 @@ export const ADD_CAR = gql`mutation Mutation($id: String!, $year: Int!, $make: S
 `
 
 export const REMOVE_PERSON = gql`
-mutation RemovePersonMutation($removePersonId: String!) {
-  removePerson(id: $removePersonId) {
+mutation RemovePersonMutation($id: String!) {
+  removePerson(id: $id) {
     id
     firstName
     lastName
@@ -90,8 +89,8 @@ mutation RemovePersonMutation($removePersonId: String!) {
 `
 
 export const REMOVE_CAR = gql`
-mutation RemovePersonMutation($removeCarId: String!) {
-  removeCar(id: $removeCarId) {
+mutation RemovePersonMutation($id: String!) {
+  removeCar(id: $id) {
     id
     year
     make
@@ -99,7 +98,8 @@ mutation RemovePersonMutation($removeCarId: String!) {
     price
     personId
   }
-}`
+}
+`
 
 export const PERSON_WITH_ID=gql`
 query Query($id: String) {
@@ -112,4 +112,5 @@ query Query($id: String) {
 `
   ;
   
+
   

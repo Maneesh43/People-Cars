@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect,useRef} from "react";
 import { useQuery } from "@apollo/client";
 import { ADD_CAR, GET_CARS, GET_PEOPLE } from "../../../queries";
 import { v4 as uuidv4 } from "uuid";
@@ -70,10 +70,13 @@ const Carform = () => {
     setInputs((values) => ({ ...values, [name]: value }));
   };
 
+
   return (
-    <div className="car form">
+
+    <div className={(optionss.data.people.length<1)?"hideit":"car form"} >
       <h2>Car Form</h2>
       <form
+      className='carform'
         onSubmit={handleSubmit}
         style={{ display: "flex", flexFlow: "column nowrap" }}
       >

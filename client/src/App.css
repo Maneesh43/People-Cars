@@ -47,3 +47,19 @@ h2{
   justify-content: space-evenly;
   padding: .5rem;
 }
+.hideit{
+  display: none;
+}
+.top{
+  position: fixed;
+  top: 1rem;
+  left:3rem;
+  z-index: 1;
+  transition: all .5s;
+  transform: scale(1.5);
+}
+.top:hover{
+  color: rgb(30, 151, 151);
+  transform: translateX(-10px) scale(1.5);
+}
+

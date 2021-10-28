@@ -1,12 +1,12 @@
 import "./App.css";
 import Carform from "./components/forms/forms/Carform";
 import Personform from "./components/forms/forms/Personform";
-import { ApolloClient, ApolloProvider, InMemoryCache} from "@apollo/client";
+import { ApolloClient, ApolloProvider, InMemoryCache,gql} from "@apollo/client";
 import PersonCard from "./components/cards/PersonCard";
 import CarCard from "./components/cards/CarCard";
 import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
 import ShowMore from "./components/pages/ShowMore";
-
+import { GET_CARS, READ_TODO } from "./queries";
 const client = new ApolloClient({
   uri: "http://localhost:4000/graphql",
   cache: new InMemoryCache(),
