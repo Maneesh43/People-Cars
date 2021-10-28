@@ -1,7 +1,10 @@
 import { useQuery } from "@apollo/client";
 import { GET_PERSON_CARS, PERSON_WITH_ID } from "../../queries";
 import CarCard from "../cards/CarCard";
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import {useHistory} from 'react-router-dom'
 const ShowMore = ({ props }) => {
+  const history=useHistory()
   const id = props.match.params.id;
   const { loading, error, data } = useQuery(GET_PERSON_CARS, {
     variables: { id },
@@ -13,8 +16,10 @@ const ShowMore = ({ props }) => {
   }
   if (loading || person.loading) return "Working hard to get you the results";
   if (dataa.car.length <= 1)
-    return "This is unexpected Person might not exist or He doesn't own any cars with him";
+    return "This is unexpected!!! Person might not exist or He doesn't own any cars "
   return (
+    <>
+    <div className="top"><ArrowBackIosIcon onClick={()=>{history.push('/')}}/></div>
     <div className="ShowMore" style={{ padding: "1rem", margin: "1rem" }}>
       <div className="info">
         <h2 style={{maxWidth:'80%',margin:'auto',paddingBottom:'1rem'}}>
@@ -26,6 +31,7 @@ const ShowMore = ({ props }) => {
         <CarCard cars={dataa} />
       </div>
     </div>
+    </>
   );
 };
 

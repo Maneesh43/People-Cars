@@ -10,7 +10,6 @@ function CarCard({cars}) {
   const { loading, error, data } = useQuery(GET_CARS);
   if (loading) return "Loading....";
   if (error) return "Error has occured in the application";
-  console.log(data)
 
   return (
     <Card sx={{ maxWidth: '80%',margin:'0 auto 1rem auto' }} style={{height:'80%'}}>
