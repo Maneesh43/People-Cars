@@ -11,8 +11,9 @@ function CarCard({cars}) {
   if (loading) return "Loading....";
   if (error) return "Error has occured in the application";
   console.log(data)
+
   return (
-    <Card sx={{ maxWidth: 345 }} style={{height:'80%'}}>
+    <Card sx={{ maxWidth: '80%',margin:'0 auto 1rem auto' }} style={{height:'80%'}}>
       <CardContent>
         <List component="nav">
           <CarList data={cars?cars:data} />
