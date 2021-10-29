@@ -6,6 +6,7 @@ import { useMutation, useQuery } from "@apollo/client";
 import { filter } from "lodash";
 import {gql} from '@apollo/client'
 const CarList = ({ data }) => {
+  console.log(data)
   const cars=useQuery(GET_CARS)
   const [removeCar] = useMutation(REMOVE_CAR, {
 
@@ -44,7 +45,7 @@ const CarList = ({ data }) => {
   };
   return (
     <>
-      {data.car.map((d) => {
+      {data.car.map((d,i) => {
         return (
           <>
             <ListItems
@@ -53,6 +54,7 @@ const CarList = ({ data }) => {
               key={d.year}
               dat={d}
               type={"year"}
+              key={d.year+d.id+i}
             />
             <ListItems
               item={d.make}
@@ -60,6 +62,7 @@ const CarList = ({ data }) => {
               key={d.make}
               dat={d}
               type={"make"}
+              key={d.make+d.id+i}
             />
             <ListItems
               item={d.model}
@@ -67,6 +70,7 @@ const CarList = ({ data }) => {
               key={d.model}
               dat={d}
               type={"model"}
+              key={d.model+d.id+i}
             />
             <ListItems
               item={d.price}
@@ -74,6 +78,7 @@ const CarList = ({ data }) => {
               key={d.price}
               dat={d}
               type={"price"}
+              key={d.price+d.id+i}
             />
             <ListItems
               item={d.personId}
@@ -81,8 +86,9 @@ const CarList = ({ data }) => {
               key={d.personId}
               dat={d}
               type={"personId"}
+              key={d.personId+d.id+i}
             />
-            <IconButton onClick={(e) => handleDelete(e, d)}>
+            <IconButton key={d.id+i} onClick={(e) => handleDelete(e, d)}>
               <Delete />
             </IconButton>
             <Divider />

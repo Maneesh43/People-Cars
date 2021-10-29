@@ -17,12 +17,16 @@ const typeDefs = gql`
     price: Float
     personId: String
   }
-
+type CarsPerson{
+  car: [Car]
+  person: People
+}
   type Query {
     people: [People]
     car: [Car]
     personCars(id: String): [Car]
     person(id: String): People
+    carsperson(id: String!): CarsPerson
   }
 
   type Mutation {
@@ -60,6 +64,11 @@ const resolvers = {
       const person = find(people, { id: args.id });
       return person;
     },
+    carsperson: (parent, args, context, info) => {
+      const person = find(people, { id: args.id });
+      const items = filter(cars, { personId: args.id });
+      return { person, car: items };
+    }
   },
   Mutation: {
     addPerson: (root, args) => {

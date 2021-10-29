@@ -110,6 +110,28 @@ query Query($id: String) {
   }
 }
 `
+
+export const GET_CARS_PERSON=gql`
+
+query Query($id: String!) {
+  carsperson(id: $id) {
+    car {
+      id
+      year
+      make
+      model
+      price
+      personId
+    }
+    person {
+      id
+      firstName
+      lastName
+    }
+  }
+}
+
+`
   ;
   
 
