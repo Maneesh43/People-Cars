@@ -149,7 +149,7 @@ break
         {!editable ? (
           <ListItemText primary={(type==="price")?format_currency(item):item} />
         ) : (
-          <FormControl sx={{ m: 1, width: "25ch" }} variant="standard">
+          <FormControl sx={{ m: 1, width: "25ch" }} variant="standard" key={item}>
             <InputLabel htmlFor="standard-adornment-password">
               {item}
             </InputLabel>
@@ -180,7 +180,7 @@ break
           </FormControl>
         )}
         {/* Toggle edit text */}
-        <IconButton>
+        <IconButton key={item}>
           <Edit
             onClick={() => {
               seteditable((e) => !e);
